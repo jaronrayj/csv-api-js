@@ -1,0 +1,26 @@
+{
+  "name": "csv-api",
+  "version": "1.0.0",
+  "description": "Template script that runs through a csv and runs an api call with the data.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaronrayj/csv-api-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaronrayj/csv-api-js/issues"
+  },
+  "homepage": "https://github.com/jaronrayj/csv-api-js#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "csvtojson": "^2.0.10",
+    "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
+    "inquirer": "^7.3.3"
+  }
+}
