@@ -14,6 +14,7 @@ const apiData = {
 
 };
 //////////////////////////////////////////
+const debug = false;
 
 const instance = axios.create({
     baseURL: `https://${baseUrl}/api/`,
@@ -23,7 +24,6 @@ const instance = axios.create({
 
 function main() {
     const csvStorage = fs.readdirSync('./csv-storage');
-    console.log("🚀 ~ file: main.js ~ line 26 ~ main ~ csvStorage", csvStorage)
     try {
         inquirer.prompt({
                 message: "What file do you want to use?",
@@ -34,9 +34,11 @@ function main() {
             .then(res => {
                 const returnJson = {};
                 csvtojson()
-                    .fromFile(res.file)
+                    .fromFile(`./csv-storage/${res.file}`)
                     .then(fileJSON => {
-                        console.log("🚀 ~ file: main.js ~ line 39 ~ main ~ fileJSON", fileJSON)
+                        if (debug) {
+                            console.log("🚀 ~ file: main.js ~ line 39 ~ main ~ fileJSON", fileJSON)
+                        }
 
                         fileJSON.forEach(object => {
                             instance({
@@ -48,14 +50,14 @@ function main() {
                                     returnJson[object] = res.data;
                                 })
                         });
+                        fs.writeFile('returnData.json', JSON.stringify(returnJson, null, 2), (err) => {
+                            if (err) {
+                                throw err
+                            } else {
+                                console.log(`File has been saved to returnData.json`)
+                            }
+                        });
                     })
-                fs.writeFile('returnData.json', JSON.stringify(returnJson, null, 2), (err) => {
-                    if (err) {
-                        throw err
-                    } else {
-                        console.log(`File has been saved to returnData.json`)
-                    }
-                });
             })
     } catch (err) {
         throw err;
