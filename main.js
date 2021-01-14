@@ -7,7 +7,7 @@ const inquirer = require('inquirer');
 ////////// Change these up ///////////////
 const token = process.env.TOKEN;
 const baseUrl = 'api.giphy.com';
-const preAPIUrl = `/gifs/search?api_key=KdpWJf2OZMZ9f4Gu8IyQvUBt1DOKkXJ8&q=`;
+const preAPIUrl = `/gifs/search?api_key=${token}&q=`;
 const postAPIUrl = '&limit=1&offset=0&rating=pg-13&lang=en'
 const apiType = 'get';
 const apiData = {
