@@ -60,6 +60,7 @@ function main() {
                                     .then(res => {
                                         returnJson[object[api.csvHeaderValue]] = res.data.data[0].images.original.url;
                                         count += 1;
+                                        console.log(`Completed ${count} of ${fileJSON.length}`)
                                         if (fileJSON.length === count) {
                                             if (debug) {
                                                 console.log(`finished processing`);
